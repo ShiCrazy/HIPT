@@ -82,6 +82,7 @@ class HIPT_4K(torch.nn.Module):
         # features_cls256 = features_cls256.to(self.device4k, non_blocking=True)  # 4. [1 x 384 x w_256 x h_256]
 
 		features_cls256 = features_cls256.unsqueeze(0)
+		features_cls256 = features_cls256.to(self.device256, non_blocking=True)  # 我和你代码的差别并不大，这是我在HIPT_4K文件中能看到的唯一的差别，但是这行代码是否真有必要我也并不确定
         # features_cls4k = self.model4k.forward(features_cls256)                  # 5. [1 x 192], where 192 == dim of ViT-4K [ClS] token.
 		return features_cls256
 	
